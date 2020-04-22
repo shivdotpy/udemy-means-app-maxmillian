@@ -1,16 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { MEALS } from '../data/dummy-data';
 
 const MealDetailScreen = (props) => {
+	const mealId = props.navigation.getParam('mealId');
+
+	const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
 	return (
 		<View style={styles.screen}>
-			<Text>Meal Detail Screen</Text>
+			<Text>{selectedMeal.title}</Text>
 			<Button title="Go back to categories" onPress={() => props.navigation.popToTop()} />
 		</View>
 	);
 };
 
-export default MealDetailScreen;
+MealDetailScreen.navigationOptions = (navigationData) => {
+	const mealId = navigationData.navigation.getParam('mealId');
+
+	const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+	return {
+		headerTitle: selectedMeal.title
+	};
+};
 
 const styles = StyleSheet.create({
 	screen: {
@@ -19,3 +32,5 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	}
 });
+
+export default MealDetailScreen;
