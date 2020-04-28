@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import DefaultText from './DefaultText';
 
 const MealItem = (props) => {
 	return (
@@ -17,9 +18,9 @@ const MealItem = (props) => {
 						</ImageBackground>
 					</View>
 					<View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-						<Text>{props.duration} Minutes</Text>
-						<Text>{props.complexity.toUpperCase()}</Text>
-						<Text>{props.affordability.toUpperCase()}</Text>
+						<DefaultText>{props.duration} m</DefaultText>
+						<DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+						<DefaultText>{props.affordability.toUpperCase()}</DefaultText>
 					</View>
 				</View>
 			</TouchableOpacity>
